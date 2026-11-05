@@ -32,7 +32,7 @@ function mostrarProductos() {
 }
 
 // CARRITO DE COMPRAS
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("bloomBeautyCarrito")) || [];
 
 function agregarAlCarrito(id) {
   const producto = productos.find((item) => item.id === id);
@@ -97,6 +97,7 @@ function actualizarCarrito() {
 
   listaCarrito.innerHTML = "";
   let total = 0;
+  localStorage.setItem("bloomBeautyCarrito", JSON.stringify(carrito));
 
   if (carrito.length === 0) {
     listaCarrito.innerHTML = "<p>Tu carrito está vacío.</p>";
