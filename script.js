@@ -158,5 +158,50 @@ actualizarCarrito();
 const botonWhatsapp = document.getElementById("contacto-whatsapp");
 
 if (botonWhatsapp) {
-    botonWhatsapp.href = "https://wa.me/57332448394";
+    botonWhatsapp.href = "https://wa.me/573332448394";
+}
+
+// BOTON PARA VACIAR EL CARRITO
+const botonVaciar = document.getElementById("vaciar-carrito");
+
+if (botonVaciar) {
+  botonVaciar.addEventListener("click", function () {
+    carrito = [];
+    actualizarCarrito();
+  });
+}
+
+// FINALIZAR COMPRA POR WHATSAPP
+const botonFinalizar = document.getElementById("finalizar-compra");
+
+if (botonFinalizar) {
+  botonFinalizar.addEventListener("click", function () {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío. Agrega productos antes de comprar.");
+      return;
+    }
+
+    let mensaje = "¡Hola! Quiero realizar el siguiente pedido en Bloom Beauty:\n\n";
+    let total = 0;
+
+    carrito.forEach((item) => {
+      const producto = item.producto;
+      const subtotal = producto.precio * item.cantidad;
+
+      total += subtotal;
+
+      mensaje += `${producto.nombre}\n`;
+      mensaje += `Cantidad: ${item.cantidad}\n`;
+      mensaje += `Subtotal: $${subtotal.toLocaleString("es-CO")}\n\n`;
+    });
+
+    mensaje += `Total del pedido: $${total.toLocaleString("es-CO")}`;
+
+    const enlaceContacto = document.getElementById("contacto-whatsapp");
+    const numero = enlaceContacto.href.split("/").pop();
+
+    const enlacePedido = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(enlacePedido, "_blank");
+  });
 }
