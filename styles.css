@@ -256,3 +256,34 @@ main {
     gap: 25px;
     margin-top: 20px;
 }
+
+.contacto {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff0f5;
+}
+
+.contacto h2 {
+    color: #bd6689;
+    margin-bottom: 15px;
+}
+
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.redes-sociales a {
+    background-color: #d989a8;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+}
+
+.redes-sociales a:hover {
+    background-color: #bd6689;
+}

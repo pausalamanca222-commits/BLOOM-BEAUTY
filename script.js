@@ -155,3 +155,8 @@ if (buscador && limpiarBusqueda) {
 // INICIAR LA TIENDA
 mostrarProductos();
 actualizarCarrito();
+const botonWhatsapp = document.getElementById("contacto-whatsapp");
+
+if (botonWhatsapp) {
+    botonWhatsapp.href = "https://wa.me/57332448394";
+}
